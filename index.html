@@ -13,14 +13,36 @@
 			"ask": "https://www.ask.com/web"
 		};
 		let form = document.getElementById('searchForm');
+		let searchTerm = document.querySelector("[name=q]").value;
+
+		if (searchTerm.trim() === "") {
+            event.preventDefault();
+            alert("Please enter a search term");
+            return;
+        }
+
 		let selectedEngine = document.querySelector('[name=engine]:checked');
+		
+		if (selectedEngine === null) {
+            event.preventDefault();
+            alert('Invalid search engine selection');
+            return;
+        }
+
 		let action = actions(selectedEngine.value);
+
+		if (action === undefined) {
+            event.preventDefault();
+            alert('Invalid search engine selection');
+            return;
+        }
+		
 		form.setAttribute("action", action);
 	}
 		// TODO: create a handler
     window.addEventListener("load", function(){
         // TODO: register the handler
-		let form = document.querySelector("form");
+		let form = document.querySelector("searchForm");
 		form.addEventListener("submit", setSearchEngine);
 	});
 	</script>
