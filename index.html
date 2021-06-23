@@ -8,41 +8,21 @@
 		//console.log(`made it!`);
 		let actions  = {
 			"google": "https://www.google.com/search",
-			"duckuckGo": "https://www.duckduckgo.com/",
+			"duckDuckGo": "https://www.duckduckgo.com/",
 			"bing": "https://www.bing.com/search",
 			"ask": "https://www.ask.com/web"
 		};
 		let form = document.getElementById('searchForm');
-		let searchTerm = document.querySelector("[name=q]").value;
-
-		if (searchTerm.trim() === "") {
-            event.preventDefault();
-            alert("Please enter a search term");
-            return;
-        }
-
+		//let searchTerm = document.querySelector("[name=q]").value;
 		let selectedEngine = document.querySelector('[name=engine]:checked');
-		
-		if (selectedEngine === null) {
-            event.preventDefault();
-            alert('Invalid search engine selection');
-            return;
-        }
-
 		let action = actions(selectedEngine.value);
-
-		if (action === undefined) {
-            event.preventDefault();
-            alert('Invalid search engine selection');
-            return;
-        }
 		
 		form.setAttribute("action", action);
 	}
 		// TODO: create a handler
     window.addEventListener("load", function(){
         // TODO: register the handler
-		let form = document.querySelector("searchForm");
+		let form = document.getElementById("searchForm");
 		form.addEventListener("submit", setSearchEngine);
 	});
 	</script>
@@ -53,10 +33,22 @@
 	<form id="searchForm">
 		<input type="text" name="q"/>
 
-				<label><input type="radio" name="engine" value = "google">Google</label>
-				<label><input type="radio" name="engine" value = "duckDuckGo">DuckDuckGo</label>
-				<label><input type="radio" name="engine" value = "bing">Bing</label>
-				<label><input type="radio" name="engine" value = "ask">Ask</label>
+				<label>
+					<input type="radio" name="engine" value = "google">
+					Google
+				</label>
+				<label>
+					<input type="radio" name="engine" value = "duckDuckGo">
+					DuckDuckGo
+				</label>
+				<label>
+					<input type="radio" name="engine" value = "bing">
+					Bing
+				</label>
+				<label>
+					<input type="radio" name="engine" value = "ask">
+					Ask
+				</label>
 
 		<input type="submit" value = "Go!">		
 	</form>
