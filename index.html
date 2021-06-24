@@ -15,7 +15,7 @@
 		let form = document.getElementById('searchForm');
 		//let searchTerm = document.querySelector("[name=q]").value;
 		let selectedEngine = document.querySelector('[name=engine]:checked');
-		let action = actions(selectedEngine.value);
+		let action = actions[selectedEngine.value];
 		
 		form.setAttribute("action", action);
 	}
